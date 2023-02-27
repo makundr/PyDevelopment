@@ -2,6 +2,7 @@ import random
 import sys  
 from os.path import exists
 from urllib import urlopen
+from cowsay import cowsay
 
 
 def bullscows(guess, secret):
@@ -9,11 +10,11 @@ def bullscows(guess, secret):
 
 
 def inform(format_string, bulls, cows):
-    print(format_string.format(bulls, cows))
+    print(cowsay(format_string.format(bulls, cows)))
 
 
 def ask(prompt, valid = None):
-    guess = input(prompt)
+    guess = input(cowsay(prompt))
 
     if valid is None:
         return guess
@@ -22,7 +23,7 @@ def ask(prompt, valid = None):
         if guess in valid:
             return guess
         print('Неизвестное слово')
-        guess = input(prompt)
+        guess = input(cowsay(prompt))
 
 
 def gameplay(ask, inform, words):
